@@ -1,0 +1,39 @@
+.rodape{
+    background-color: #6278f7;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* align-content: center; */
+    align-items: center;
+    justify-content: space-around;
+}
+
+.rodape div{
+    margin: 16px 0 16px 0;
+    padding: 16px 0 16px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    width: calc(width / 3);
+}
+
+.rodape-logo-social > img{
+    width: 16px;
+    margin: 0 16px 0 16px;
+}
+
+.rodape-logo-organo > img{
+    width: 128px;
+    margin: 0 16px 0 16px;
+}
+
+.rodape-right{
+    color: #fff;
+}
+
+.rodape-right p{
+    font-size: calc(width / 3) + 1vw;
+    margin: 0;
+}

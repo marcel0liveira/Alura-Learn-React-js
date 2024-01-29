@@ -1,29 +1,30 @@
 import { useState } from "react";
-import { Botao } from "../Botao/Botao";
-import { CampoTexto } from "../CampoTexto/CampoTexto";
-import { ListaSuspensa } from "../ListaSuspensa/ListaSuspensa";
+import  Botao  from "../Botao";
+import  CampoTexto  from "../CampoTexto";
+import  ListaSuspensa  from "../ListaSuspensa";
 import "./Formulario.css";
 
-const times = [
-  "Programação",
-  "Front-End",
-  "Data Science",
-  "Devops",
-  "UX e Design",
-  "Mobile",
-  "Inovação e Gestão",
-];
-
-export const Formulario = () => {
-  const [nome, setNome] = useState("");
-  const [cargo, setCargo] = useState("");
-  const [imagem, setImagem] = useState("");
-  const [time, setTime] = useState("");
+export const Formulario = (props) => {
+  
+  const [nome, setNome] = useState("")
+  const [cargo, setCargo] = useState("")
+  const [imagem, setImagem] = useState("")
+  const [time, setTime] = useState("")
 
   const aoSalvar = (evento) => {
-    evento.preventDefault();
-    console.log(`O Form foi submetido com os valores => ${nome}, ${cargo}, ${imagem}, ${time}`)
-  };
+    evento.preventDefault()
+    // console.log(`O Form foi submetido com os valores => ${nome}, ${cargo}, ${imagem}, ${time}`);
+    props.aoColaboradorCadastrado({
+      nome,
+      cargo,
+      imagem,
+      time,
+    })
+    setNome("")
+    setCargo("")
+    setImagem("")
+    setTime("")
+  }
 
   return (
     <section className="formulario">
@@ -33,7 +34,7 @@ export const Formulario = () => {
           obrigatorio={true}
           label="Nome"
           placeholder="Digite o seu nome"
-          value={nome}
+          valor={nome}
           aoAlterado={valor => setNome(valor)}
         />
         <CampoTexto
@@ -46,20 +47,20 @@ export const Formulario = () => {
         <CampoTexto
           obrigatorio={false}
           label="Imagem"
-          placeholder="Digite o local da sua imagem"
-          value={imagem}
+          placeholder="Digite o endereço da imagem"
+          valor={imagem}
           aoAlterado={valor => setImagem(valor)}
         />
         <ListaSuspensa 
           obrigatorio={true} 
           label="Time" 
-          itens={times} 
+          itens={props.times} 
           valor={time}
           aoAlterado={valor => setTime(valor)}
         />
-        <Botao 
-          texto="Criar Card" 
-        />
+        <Botao>
+          Criar Card
+        </Botao>
       </form>
     </section>
   );
